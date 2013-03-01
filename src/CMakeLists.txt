@@ -1,4 +1,5 @@
 set(LIB_NAME "ssd1306")
+set(LIB_NAME_STATIC "ssd1306s")
 
 set(SRC_FILES
   ssd1306.c
@@ -13,12 +14,13 @@ set(PUBLIC_HEADERS
   ../include/ssd1306/ssd1306.h
 )
 
-
-
-add_library(${LIB_NAME} 
+add_library(${LIB_NAME_STATIC} 
   ${PRIVATE_HDRS}
   ${PUBLIC_HDRS}
   ${SRC_FILES}
+)
+
+target_link_libraries(${LIB_NAME_STATIC}
 )
 
 add_library(${LIB_NAME} SHARED 
