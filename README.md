@@ -1,7 +1,7 @@
 libssd1306
 ==========
 
-A pure C implementation to interface the Adafruit OLEDs based on SSD1306.
+A pure C implementation to interface the Adafruit OLEDs based on SSD1306 using the Rapsberry PI.
 
 The library is heavily
  * 	Based upon Python SSD1306 code from:
