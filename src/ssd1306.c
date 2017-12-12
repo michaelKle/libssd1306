@@ -28,12 +28,14 @@
 
 #include "ssd1306/ssd1306.h"
 
+
+#include "rpiIO.h"
+
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-
-#include "rpiIO.h"
+#include <time.h>
 
 #define SSD1306_SETCONTRAST 0x81
 #define SSD1306_DISPLAYALLON_RESUME 0xA4
@@ -341,14 +343,6 @@ ssd1306_data(SSD1306 * p, unsigned char * c, int len)
 	rpiIO_spiDataRW(p->spi, c, NULL, len);
 	rpiIO_digitalWrite(p->dcPin, 0);
 }
-
-
-
-
-
-
-
-
 
 
 

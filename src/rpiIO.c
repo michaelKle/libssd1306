@@ -34,7 +34,11 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdio.h>
 
+#include <sys/mman.h>
+#include <unistd.h>
+#include <time.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <linux/spi/spidev.h>
@@ -46,11 +50,7 @@
 #define GPIO_BASE                (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
 
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <sys/mman.h>
-#include <unistd.h>
+
 
 #define PAGE_SIZE (4*1024)
 #define BLOCK_SIZE (4*1024)
@@ -175,6 +175,8 @@ rpiIO_spiDestroy(RPIIO_SPI * p)
 {
 	if (!p) return;
 
+	close(p->fd);
+
 	free(p);
 }
 
@@ -182,7 +184,7 @@ rpiIO_spiDestroy(RPIIO_SPI * p)
 int
 rpiIO_spiDataRW (RPIIO_SPI * p,  unsigned char * tx, unsigned char * rx, int len)
 {
-	if (!p) return;
+	if (!p) return 0;
 
 	struct spi_ioc_transfer spi;
 
