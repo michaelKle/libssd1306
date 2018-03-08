@@ -17,7 +17,11 @@ The library is heavily
   	by Gordon Henderson
 
 This is a CMake project which allows out of source builds. Simply run:
- > mkdir build && cd build && cmake ../libssd1306/ && make
+
+    git clone https://github.com/michaelKle/libssd1306
+    cd libssd1306
+    mkdir build && cd build && cmake ../../libssd1306/ && make
 
 The compiled library and test application can be found under build/src then. Optionally you can set an install path and run
- > make install
+
+    sudo make install
